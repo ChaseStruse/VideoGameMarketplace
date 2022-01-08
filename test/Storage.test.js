@@ -32,7 +32,7 @@ contract('Storage', ([deployer, seller, buyer]) => {
         })
         it("does add a product when fields are valid", async() => {
             storage.addProduct('Macbook', web3.utils.toWei('1'), 1, { from: seller });
-            const product = await storage.getProductByOwner(seller, 2);
+            const product = await storage.getProductByOwner(seller, 0);
 
             assert.equal(product.name, 'Macbook');
             assert.equal(product.price, web3.utils.toWei('1'));
