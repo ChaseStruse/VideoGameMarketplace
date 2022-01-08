@@ -52,5 +52,4 @@ contract('Storage', ([deployer, seller, buyer]) => {
             assert.equal(product.owner, seller);
         })
     })
-
 })
