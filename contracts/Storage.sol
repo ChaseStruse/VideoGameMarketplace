@@ -1,28 +1,34 @@
 pragma solidity >=0.4.17 <0.9.0;
+pragma experimental ABIEncoderV2;
 
 contract Storage {
     struct Product {
-        uint id;
         string name;
         uint price;
+        uint quantity;
         address owner;
         bool purchased;
     }
-    mapping(uint => Product) public products;
-    uint productCount;
+    mapping(address => Product[]) public products;
+    Product[] public allProducts;
 
-    function addProduct(string memory name, uint price) public {
-        Product memory productToAdd = Product(productCount + 1, name, price, msg.sender, false);
+    function addProduct(string memory name, uint price, uint quantity) public {
+        address owner = msg.sender;
+        Product memory productToAdd = Product(name, price, quantity, owner, false);
         validateProduct(productToAdd);
-        productCount++;
-        products[productCount] = productToAdd;
+        allProducts.push(productToAdd);
+        products[owner].push(productToAdd);
     }
 
+    function getProductByOwner(address productOwner, uint arrayPosition) public view returns(Product memory){
+        return products[productOwner][arrayPosition];
+    }
+    
     function validateProduct (Product memory product) private pure{
-        require(product.id > 0);
         require(bytes(product.name).length > 0);
         require(product.owner != address(0x0) && product.owner != address(0));
         require(product.price > 0);
+        require(product.quantity > 0);
         require(product.purchased == false);
     }
 
