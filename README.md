@@ -1,27 +1,27 @@
-# VideoGameMarketplace
+# Video Game Marketplace
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
+This is my second blockchain application, ever!!! I am attempting to iterate on my prior project, EtherMarketplace, and make this project even better.
+For this project I am not using tutorials and am purely going based on the documentation. I am learning and failing all by myself. 
 
-## Development server
+## Requirements to run
+- Truffle
+- npm 
+- Ganache
+- Metamask
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## How to run
 
-## Code scaffolding
+1. Start Ganache and create a new workspace
+2. Within your browser, go to metamask, connect to local Ganache instance
+3. Import two accounts from Ganache to your metamask
+    - 1 should be the seller
+    - 2 Should be the buyer
+4. Within the console, run truffle compile
+5. Run truffle migrate
+6. Run npm install
+7. Run npm run start
+8. Once the browser opens, connect your metamask account for the seller
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Issues that may come up later or will need refactoring
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- I feel like there needs to be a better way to deal with the product storage... not sure how yet but still thinking. 
