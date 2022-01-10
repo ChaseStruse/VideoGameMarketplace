@@ -5424,12 +5424,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xe55148Ba761A9de39b6655bc12baDA83Db176313",
-      "transactionHash": "0x47a5eeb74a66ca775365d7149f466aa5e987ac7522bf107875859e9815b334be"
+      "address": "0xbBB924427B02cC55b107d12561DB09048187BB13",
+      "transactionHash": "0xbd027d7f8494a8d764e1f48dc13af90dbfa1586c0b0f373f4099ab416433356a"
     }
   },
   "schemaVersion": "3.0.2",
-  "updatedAt": "2022-01-10T00:22:59.345Z",
+  "updatedAt": "2022-01-10T16:52:13.764Z",
   "devdoc": {
     "methods": {}
   },
