@@ -1,22 +1,26 @@
 pragma solidity >=0.4.17 <0.9.0;
+pragma experimental ABIEncoderV2;
+
 import "./Storage.sol";
 
-contract Buyer {
+contract User {
+
     address storageAddress;
 
-    constructor(address _storageAddress) public {
-        storageAddress = _storageAddress;
+    constructor(address addr) public {
+        storageAddress = addr;
     }
+
     function PurchaseProduct(address payable productOwner, uint arrayPosition) public payable {
         Storage storageInstance = Storage(storageAddress);
         uint price; uint quantity;
-
         (price, quantity) = storageInstance.getProductPriceAndQuantityByOwner(productOwner, arrayPosition);
-        
-        require(msg.value >= price);
 
-        address payable seller = productOwner;
-        seller.transfer(msg.value);
-        storageInstance.transferProductOwnership(seller, arrayPosition, msg.sender);
+        require(price <= msg.value);
+        require(quantity > 0);
+
+        storageInstance.transferProductOwnership(productOwner, arrayPosition, msg.sender);
+        productOwner.transfer(msg.value);
     }
+    
 }
