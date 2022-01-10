@@ -1,28 +1,25 @@
 const { assert } = require('chai');
 
-const Buyer = artifacts.require('../build/contracts/Buyer.sol');
-const Storage = artifacts.require('../build/contracts/Buyer.sol');
+const User = artifacts.require('../build/contracts/User.sol');
+const Storage = artifacts.require('../build/contracts/Storage.sol');
 
 require('chai')
     .use(require('chai-as-promised'))
     .should();
 
-contract('Buyer', ([deployer, seller, buyer]) => { 
+contract('User', ([deployer, seller, buyer]) => { 
     let storage;
-    let buyerContract;
+    let user;
 
     before (async () => {
         storage = await Storage.deployed();
-        buyerContract = await Buyer.deployed();
+        user = await User.deployed();
     });
     
     describe('deployment', async() => {
         it('deploys successfully', async () => {
-            const storageAddress = await storage.address;
-            const buyerAddress = await buyerContract.address;
-
-            assert.notEqual(storageAddress, 0x0);
-            assert.notEqual(buyerAddress, 0x0);
+            const userAddress = await user.address;
+            assert.notEqual(userAddress, 0x0);
         })
     });
 });
