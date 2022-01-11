@@ -15,8 +15,8 @@ contract('User', ([deployer, seller, buyer]) => {
     before (async () => {
         storage = await Storage.deployed();
         user = await User.deployed();
-        storage.addProduct('Macbook', web3.utils.toWei('1'), 1, { from: seller });
-        product = await storage.getProductByOwner(seller, 0);
+        storage.addProduct('Macbook Pro', web3.utils.toWei('1'), 1, { from: seller });
+        product = await storage.getProductByOwner(seller, 2);
     });
     
     describe('deployment', async() => {
@@ -28,8 +28,8 @@ contract('User', ([deployer, seller, buyer]) => {
 
     describe('purchasing', async() => {
         it('transfers ownership', async() => {
-            user.PurchaseProduct(seller, 0, { from: buyer, value: web3.utils.toWei('1', 'Ether') });
-            const updatedProduct = await storage.getProductByOwner(buyer, 0);
+            user.PurchaseProduct(seller, 2, { from: buyer, value: web3.utils.toWei('1', 'Ether') });
+            const updatedProduct = await storage.getProductByOwner(buyer, 2);
             assert.equal(updatedProduct.owner = buyer);
         })
     })

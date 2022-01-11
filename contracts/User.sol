@@ -15,9 +15,9 @@ contract User {
         Storage storageInstance = Storage(storageAddress);
         uint price; uint quantity;
         (price, quantity) = storageInstance.getProductPriceAndQuantityByOwner(productOwner, arrayPosition);
-
-        require(price <= msg.value);
-        require(quantity > 0);
+        
+        require(price <= msg.value, "Price is not greater than or equal to msg.value");
+        require(quantity > 0, "Quantity is not greater than 0");
 
         storageInstance.transferProductOwnership(productOwner, arrayPosition, msg.sender);
         productOwner.transfer(msg.value);
